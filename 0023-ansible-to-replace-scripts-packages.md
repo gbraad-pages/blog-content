@@ -1,5 +1,5 @@
 ---
-Title: Replace scripts with Ansible: package installation
+Title: "Replace scripts with Ansible: package installation"
 Date: 2016-10-03
 Category: DevOps
 Tags: deployment, configuration, ansible, devops

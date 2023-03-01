@@ -1,5 +1,5 @@
 ---
-Title: Task management and Personal Kanban: how I use GitLab Issues
+Title: "Task management and Personal Kanban: how I use GitLab Issues"
 Date: 2016-10-09
 Category: Misc
 Tags: continuous improvement, management, knowledge, kanban, gitlab
