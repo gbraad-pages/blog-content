@@ -14,6 +14,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Remove todo symlink
+        run: rm todo
+
       - name: Build docs
         run: docker run --rm -v $PWD:/workspace ghcr.io/${{ github.repository_owner }}/mdbook:latest build
 
