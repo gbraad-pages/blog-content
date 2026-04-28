@@ -7,7 +7,7 @@ title = "Gerard Braad's Blog"
 [output.html]
 default-theme = "light"
 preferred-dark-theme = "light"
-additional-css = ["theme/custom.css"]
+additional-css = ["theme/custom.css", "theme/highlight.css"]
 git-repository-url = "https://github.com/gbraad-pages/blog-content"
 
 [preprocessor.callouts]
