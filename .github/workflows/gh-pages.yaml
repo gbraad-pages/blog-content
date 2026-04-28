@@ -40,11 +40,11 @@ jobs:
                   header += f\"# {fields['Title']}\n\n\"
               meta_lines = []
               if 'Date' in fields:
-                  meta_lines.append(f\"- date:  \n  {fields['Date']}\")
+                  meta_lines.append(f\"- Date: {fields['Date']}\")
               if 'Category' in fields:
-                  meta_lines.append(f\"- category:  \n  {fields['Category']}\")
+                  meta_lines.append(f\"- Category: {fields['Category']}\")
               if 'Tags' in fields:
-                  meta_lines.append(f\"- tags:  \n  {fields['Tags']}\")
+                  meta_lines.append(f\"- Tags: {fields['Tags']}\")
               if meta_lines:
                   header += '\n'.join(meta_lines) + '\n\n'
               open(f, 'w').write(header + rest)
