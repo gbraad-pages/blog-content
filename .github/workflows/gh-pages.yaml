@@ -20,6 +20,36 @@ jobs:
       - name: Remove todo symlink
         run: rm todo
 
+      - name: Convert Pelican frontmatter to markdown
+        run: |
+          python3 -c "
+          import re, glob
+          for f in glob.glob('done/*.md'):
+              txt = open(f).read()
+              m = re.match(r'\A---\n(.*?)\n---\n?', txt, flags=re.DOTALL)
+              if not m:
+                  continue
+              fields = {}
+              for line in m.group(1).splitlines():
+                  if ':' in line:
+                      key, _, val = line.partition(':')
+                      fields[key.strip()] = val.strip()
+              rest = txt[m.end():]
+              header = ''
+              if 'Title' in fields:
+                  header += f\"# {fields['Title']}\n\n\"
+              meta_lines = []
+              if 'Date' in fields:
+                  meta_lines.append(f\"- date:  \n  {fields['Date']}\")
+              if 'Category' in fields:
+                  meta_lines.append(f\"- category:  \n  {fields['Category']}\")
+              if 'Tags' in fields:
+                  meta_lines.append(f\"- tags:  \n  {fields['Tags']}\")
+              if meta_lines:
+                  header += '\n'.join(meta_lines) + '\n\n'
+              open(f, 'w').write(header + rest)
+          "
+
       - name: Build docs
         run: docker run --rm -v $PWD:/workspace ghcr.io/${{ github.repository_owner }}/mdbook:latest build
 
