@@ -5,7 +5,6 @@ Category: Patreon
 Tags: patreon, regroove, synthesizer, work, game
 ---
 
-# Busy days ...
 ... but not for the reasons I expected. Have not been able to make the video I wanted, as I forgot to realize I normally edited on Windows using OpenShot, which started to fail often. Tried DaVinci, but then realized after returning that machine that I was not able to use DaVinci on Bazzite. I am still waiting on replacement hardware. Shortages have caused this to take much longer.
 
 Anyway, haven't been able to do a lot these days as I didn't feel so great. At least have a backlog of stuff I want to do. [Read about this on Patreon](https://www.patreon.com/posts/busy-days-160623435), but it involves the idea of a gamne engine amnd generative music based on gameplay, in a Wipeout-like race style.
