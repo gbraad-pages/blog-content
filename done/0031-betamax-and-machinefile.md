@@ -6,8 +6,10 @@ Tags: virtual machines, containers, infrastructure, development
 ---
 
 
-# Betamax and Machinefile
+# Betamax, Machinefile and a roll of ducttape
 ### Choosing Convenience over the "Best" Standard
+
+![](https://avatars.githubusercontent.com/u/296723703?s=140&v=4)
 
 In infrastructure-as-code, the best technical solution does not always win.
 
@@ -113,6 +115,17 @@ The solution here does not exclude containers or bootc. Instead, Machinefile and
 
 Machinefile is a choice based on context. It does not replace immutable systems; it accelerates them. It proves that reuse, familiarity, and removing human friction matter more than chasing the perfect standard.
 
+### Example Forgejo
+To demonstrate that this process can be applied to containers, virtual machines and eventually upgrade to bootable containers, you can have a look at the [Forgejo example](https://github.com/ducttape-lab/forgejo).
+
+Moving from a running cloud image to `bootc` can be done with
+```sh
+$ dnf -y install system-reinstall-bootc
+$ system-reinstall-bootc ghcr.io/ducttape-lab/forgejo-bootc:latest
+$ reboot
+```
+
+This makes immutability a choice, instead of a requirement. When dealing wth an AI agent, you want to allow installing development tools, but also easy recreation, treating them as ephemeral. For this see [`debian-claude`](github.com/ducttape-infra/examples/tree/main/debian-claude) as an example.
 
 ### What's next
 I will work more on this tool in future, expecially as one of the arguments is the speed of starting and overhead it has; you are still starting a full virtual machine. And in this age of AI agents and GPU acceleration needs, a leaner approach is needed.
