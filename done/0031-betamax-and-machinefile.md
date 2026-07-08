@@ -1,5 +1,5 @@
 ---
-Title: Betamax and Machinefile
+Title: Betamax, Machinefile and a roll of Ducttape
 Date: 2026-07-08
 Category: Infrastructure
 Tags: virtual machines, containers, infrastructure, development
@@ -132,4 +132,4 @@ I will work more on this tool in future, expecially as one of the arguments is t
 
 I will be working on a MicroVM apprach, so instead of full host emulation, instead `virtio-mmio` will be used. Solutions like cloud-hypervisor and krun already utilize this. Machinefile can already be utilized as a CLI tool for them, but ideally I want this to be part of Ducttape to prepare images, share and convert, and eventually run them on targets in a supported workflow.
 
-Even if you do not want to use Lima, ducttape and machinefile are still ideal tools for your automation; this can be seen from the [`Packer-machinefile` example](https://github.com/ducttape-infra/packer-machinefile/), the goal of ducttape is to augment your process.
+Even if you do not want to use Lima, ducttape and machinefile are still ideal tools for your automation; this can be seen from the [`Packer-machinefile` example](https://github.com/ducttape-infra/packer-machinefile/), the goal of ducttape is to augment your process, to stick them together but allow to be replaced or improved when needed.
