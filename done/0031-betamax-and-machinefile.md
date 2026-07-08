@@ -5,10 +5,6 @@ Category: Infrastructure
 Tags: virtual machines, containers, infrastructure, development
 ---
 
----
-ref: https://share.gemini.google/ClapWvnudTYA
-
----
 
 # Betamax and Machinefile
 ### Choosing Convenience over the "Best" Standard
