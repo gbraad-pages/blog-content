@@ -6,7 +6,6 @@ Tags: virtual machines, containers, infrastructure, development
 ---
 
 
-# Betamax, Machinefile and a roll of ducttape
 ### Choosing Convenience over the "Best" Standard
 
 ![](https://avatars.githubusercontent.com/u/296723703?s=140&v=4)
