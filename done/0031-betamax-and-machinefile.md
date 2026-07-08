@@ -17,7 +17,7 @@ Take machine provisioning. Fedora CoreOS's Ignition is engineered better than cl
 ### Introduction
 Yet, cloud-init won the format war. Like VHS beating Betamax, `cloud-init` became the de facto industry standard because it was everywhere, used simple YAML, and was easy to adopt. It won on convenience, not engineering perfection. When you build machine setups or developer environments, you face this exact trade-off.
 
-In this article I will show you my solution to a container and virtual machine setup, how I automated this and how this led to the development of Machinefile, and eventually [Ducttape](https://github.com/ducttape-infra/ducttape).
+In this article I will show you my solution to a container and virtual machine setup, how I automated this and how this led to the development of [Machinefile](https://github.com/ducttape-infra/machinefile), and eventually [Ducttape](https://github.com/ducttape-infra/ducttape).
 
 ### Containers and virtual machines
 To understand why modern development environment workflows look the way they do, you have to trace how we isolate and deploy software. We went from heavy, emulated hardware to ultra-lightweight application layers, and finally to a hybrid reality where operating systems are managed exactly like containers.
@@ -48,7 +48,7 @@ In the age of AI agents I found the isolation very beneficial, and with tooling 
 
 
 ### Machinefile
-To see how this works, you can look at how I created my developer environment. In projects like [`gbraad-devenv/fedora`](https://github.com/gbraad-devenv/fedora), base images are built automatically via CI/CD pipelines. The pipeline generates multiple formats from the same source at the same time: standard containers, immutable bootc disk images, and cloud disk images.
+To see how this works, you can look at how I created my developer environment. In projects like [gbraad-devenv/fedora](https://github.com/gbraad-devenv/fedora), base images are built automatically via CI/CD pipelines. The pipeline generates multiple formats from the same source at the same time: standard containers, immutable bootc disk images, and cloud disk images.
 
 When a developer needs a localized workspace, local orchestration tools like macadam, KVM, or Lima take over. They boot that pre-baked cloud image and apply configurations using cloud-init.
 
@@ -57,7 +57,7 @@ This provides convenience and speed without sacrificing the end goal. It gives t
  * Consistency: The local VM matches the production container or bootc target.
  * Isolation: The developer gets a dedicated kernel and a secure sandbox.
 
-This led me to create this as part of my [`dotfiles`](https://github.com/gbraad-dotfiles), and tools to start a containerized image with `devenv`, or a virtual machine with `machine`.
+This led me to create this as part of [my dotfiles](https://github.com/gbraad-dotfiles), and tools to start a containerized image with `devenv`, or a virtual machine with `machine`.
 
 
 ### How Machinefile Works
@@ -102,7 +102,7 @@ $ ducttape run ghcr.io/ducttape-infra/fedora-httpd -n http-server
 ### Expanding to Non-Linux
 Crucially, this simple translation also breaks down operating system barriers. Container images and `bootc` are strictly bound to Linux kernels. But because `Machinefile` strips away the container engine requirements, you can reuse the exact same syntax on environments where containers cannot natively run.
 
-Look at [`gbraad-dotfiles/freebsd`](https://github.com/gbraad-dotfiles/freebsd) as an example. In this setup, a standard Containerfile format is repurposed to provision a FreeBSD virtual machine.
+Look at [gbraad-dotfiles/freebsd](https://github.com/gbraad-dotfiles/freebsd) as an example. In this setup, a standard Containerfile format is repurposed to provision a FreeBSD virtual machine.
 
 This decouples your configuration layout from a single operating system type. You get a single, unified mental model for setting up environments across entirely different kernels.
 
@@ -124,7 +124,8 @@ $ system-reinstall-bootc ghcr.io/ducttape-lab/forgejo-bootc:latest
 $ reboot
 ```
 
-This makes immutability a choice, instead of a requirement. When dealing wth an AI agent, you want to allow installing development tools, but also easy recreation, treating them as ephemeral. For this see [`debian-claude`](github.com/ducttape-infra/examples/tree/main/debian-claude) as an example.
+This makes immutability a choice, instead of a requirement. When dealing wth an AI agent, you want to allow installing development tools, but also easy recreation, treating them as ephemeral. For this see [debian-claude](https://github.com/ducttape-infra/examples/tree/main/debian-claude) as an example.
+
 
 ### What's next
 I will work more on this tool in future, expecially as one of the arguments is the speed of starting and overhead it has; you are still starting a full virtual machine. And in this age of AI agents and GPU acceleration needs, a leaner approach is needed.
